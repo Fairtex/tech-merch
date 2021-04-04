@@ -2,7 +2,7 @@ import cn from 'classnames';
 import React, { useState, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import Header from "components/Header";
+import Header from "components/header";
 
 const Layout = ({ children, isMain }) => {
   const data = useStaticQuery(graphql`
