@@ -1,29 +1,30 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import * as React from "react";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import 'assets/styles/index.scss';
 
-const IndexPage = () => (
-  <Layout>
+import Layout from "components/layout";
+import SEO from "components/seo";
+import Hero from "components/hero";
+import About from "components/about";
+import Services from "components/services";
+import Portfolio from "components/portfolio";
+import Contacts from "components/contacts";
+import Order from "components/order";
+
+const IndexPage = () => {
+  const submitHandler = (v) => {
+    console.log(v);
+  }
+  return (
+  <Layout isMain>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
+    <Hero />
+    <About />
+    <Services />
+    <Portfolio />
+    <Contacts />
+    <Order submitHandler={submitHandler}/>
   </Layout>
-)
+)};
 
 export default IndexPage

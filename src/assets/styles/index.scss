@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  max-width: 1600px;
+  padding: 0 40px;
+  margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    padding: 0 20px;
+  }
+}
+
+.main {
+  &--scrolled {
+    padding-top: 60px;
+  }
+}
+
+@import "components/header";
+@import "components/social";
+@import "components/hero";
+@import "components/about";
+@import "components/services";
+@import "components/portfolio";
+@import "components/contacts";
+@import "components/order";
