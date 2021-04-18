@@ -8,7 +8,7 @@ const Social = () => (
   <ul className="social">
     <li className="social__item">
       <a 
-        href="#"
+        href="https://www.instagram.com/techmerchandising_omsk/"
         rel="noreferrer noopener" 
         target="_blank"
         className="social__link"
@@ -18,7 +18,7 @@ const Social = () => (
     </li>
     <li className="social__item">
       <a 
-        href="#"
+        href="https://api.whatsapp.com/send?phone=79139785018"
         rel="noreferrer noopener" 
         target="_blank"
         className="social__link"
@@ -28,7 +28,7 @@ const Social = () => (
     </li>
     <li className="social__item">
       <a 
-        href="#"
+        href="tel:+73812534483"
         rel="noreferrer noopener" 
         target="_blank"
         className="social__link"

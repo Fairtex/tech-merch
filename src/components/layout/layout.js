@@ -34,19 +34,19 @@ const Layout = ({ children, isMain }) => {
   }, []);
 
   return (
-    <>
+    <div className="wrapper">
       <Header isMain={isMain} isScrolled={isScrolled} />
         <main className={cn(!isMain && isScrolled && 'main--scrolled')}>{children}</main>
         <footer
           style={{
-            marginTop: `2rem`,
+            display: `flex`,
+            justifyContent: `center`,
+            margin: `1rem`,
           }}
         >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
+        ТехМерч Омск © {new Date().getFullYear()}
         </footer>
-    </>
+    </div>
   )
 }
 

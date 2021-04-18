@@ -7,7 +7,7 @@ import { convertToBgImage } from "gbimage-bridge";
 import BackgroundImage from 'gatsby-background-image';
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 
-import DrillIcon from 'assets/icons/drill';
+import ScrewDriver from 'assets/icons/screwdriver';
 import ToolsIcon from 'assets/icons/tools';
 import ProfLogo from 'assets/icons/professinal';
 
@@ -47,7 +47,7 @@ const Hero = () => {
               Установка и размещение рекламных материалов
             </h1>
             <AnchorLink 
-              to="#order" 
+              to="/#order" 
               title="Сделать заказ" 
               className="hero__link"
               stripHash
@@ -57,7 +57,7 @@ const Hero = () => {
           </div>
           <ul className="features">
             <li className="features__item">
-              <DrillIcon className="features__icon"/>
+              <ScrewDriver className="features__icon"/>
               <div className="features__info">
                 <h3 className="features__title">Качество</h3>
                 <p className="features__text">

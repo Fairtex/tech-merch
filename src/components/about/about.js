@@ -2,6 +2,7 @@ import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { useMediaQuery } from 'react-responsive';
 
 import ArrowIcon from 'assets/icons/arrow';
 
@@ -20,7 +21,6 @@ const responsive = {
     breakpoint: { max: 767, min: 0 },
     items: 1,
     slidesToSlide: 1,
-    partialVisibilityGutter: 40,
   },
 };
 
@@ -29,38 +29,49 @@ const CustomButtonGroup = ({
   previous,
   ...rest
 }) => {
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1024px)'
+  });
   const {
     carouselState: { currentSlide, totalItems },
   } = rest;
   const isFirst = currentSlide === 0;
   const isLast = currentSlide === totalItems - 1;
   return (
-    <div className="about__slider-btn-group">
-      <button
-        className="about__slider-btn about__slider-btn--prev"
-        disabled={isFirst}
-        onClick={() => previous()}
-      >
-        <ArrowIcon className="about__slider-icon"/>
-      </button>
-      <button
-        className="about__slider-btn about__slider-btn--next"
-        disabled={isLast}
-        onClick={() => next()}
-      >
-        <ArrowIcon className="about__slider-icon"/>
-      </button>
-    </div>
+    <>
+      {isDesktop ? (
+        <div className="about__slider-btn-group">
+          <button
+            className="about__slider-btn about__slider-btn--prev"
+            disabled={isFirst}
+            onClick={() => previous()}
+          >
+            <ArrowIcon className="about__slider-icon"/>
+          </button>
+          <button
+            className="about__slider-btn about__slider-btn--next"
+            disabled={isLast}
+            onClick={() => next()}
+          >
+            <ArrowIcon className="about__slider-icon"/>
+          </button>
+        </div>
+        ) : (null)
+      }
+    </>
   );
 };
 
 const About = () => {
-
+  const isMobileOrTablet = useMediaQuery({
+    query: '(max-width: 1023px)'
+  });
   return (
     <section className="about" id="about">
       <div className="about__inner">
         <h2 className="about__title">О компании</h2>
         <Carousel
+            swipeable={isMobileOrTablet}
             responsive={responsive}
             arrows={false}
             infinite={true}

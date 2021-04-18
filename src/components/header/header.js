@@ -1,58 +1,80 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "gatsby";
 import cn from 'classnames';
+import { useMediaQuery } from 'react-responsive';
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 import Social from 'components/social';
+import { StaticImage } from "gatsby-plugin-image";
 
 
-const Header = ({ isMain, isScrolled }) => (
-  <header className={cn('header', isMain && 'header-main', isScrolled && 'fixed')}>
-    <div className="container">
-      <div className="header__inner">
-        <Link to="/" className="header__link">
-          <span>лого</span>
-          <span className="header__link-text">ТехМерч Омск</span>
-        </Link>
-        {isMain && (
-          <nav className="header__nav">
-            <AnchorLink 
-              to="/#about" 
-              title="О компании" 
-              className="header__nav-link" 
-              stripHash
-            >
-              О компании
-            </AnchorLink>
-            <AnchorLink 
-              to="/#services" 
-              title="Услуги" 
-              className="header__nav-link"  
-              stripHash
-            >
-              Услуги
-            </AnchorLink>
-            <AnchorLink 
-              to="/#portfolio" 
-              title="Портфолио" 
-              className="header__nav-link"  
-              stripHash
-            >
-              Портфолио
-            </AnchorLink>
-            <AnchorLink 
-              to="/#contacts" 
-              title="Контакты" 
-              className="header__nav-link" 
-              stripHash
-            >
-              Контакты
-            </AnchorLink>
-          </nav>
-        )}
-        <Social />
+const Header = ({ isMain, isScrolled }) => {
+  // const [isMenuOpen, setMenuOpen] = useState(false);
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1024px)'
+  });
+  // const handleBurgerClick = () => {
+  //   setMenuOpen((prev) => !prev);
+  // }
+  return (
+    <header className={cn('header', isMain && 'header-main', isScrolled && 'fixed')}>
+      <div className="container">
+        <div className="header__inner">
+          <Link to="/" className={cn("header__link", isMain && "header__link--main")}>
+            <StaticImage 
+              src="../../assets/images/main-logo.png"
+              alt="Торговое оборудование"
+              placeholder="blurred"
+              quality={100}
+              width={200}
+            />
+          </Link>
+          {isMain && isDesktop && (
+            <nav className={cn("header__nav")}>
+              <AnchorLink 
+                to="/#about" 
+                title="О компании" 
+                className="header__nav-link" 
+                stripHash
+              >
+                О компании
+              </AnchorLink>
+              <AnchorLink 
+                to="/#services" 
+                title="Услуги" 
+                className="header__nav-link"  
+                stripHash
+              >
+                Услуги
+              </AnchorLink>
+              <AnchorLink 
+                to="/#portfolio" 
+                title="Портфолио" 
+                className="header__nav-link"  
+                stripHash
+              >
+                Портфолио
+              </AnchorLink>
+              <AnchorLink 
+                to="/#contacts" 
+                title="Контакты" 
+                className="header__nav-link" 
+                stripHash
+              >
+                Контакты
+              </AnchorLink>
+            </nav>
+          )}
+          <Social />
+          {/* {isMobileOrTablet && (
+            <button className={cn("header__burger", isMenuOpen && "header__burger--open")} onClick={handleBurgerClick}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          )} */}
+        </div>
       </div>
-    </div>
-  </header>
-)
+    </header>
+)}
 
-export default Header
+export default Header;

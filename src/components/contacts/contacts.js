@@ -1,7 +1,10 @@
 import React from "react";
+import { useMediaQuery } from 'react-responsive';
 
 const Contacts = () => {
-
+  const isMobileOrTablet = useMediaQuery({
+    query: '(max-width: 1023px)'
+  });
   return (
     <section className="contacts" id="contacts">
       <div className="contacts__inner">
@@ -26,8 +29,9 @@ const Contacts = () => {
 
             <dt className="contacts__term">Электронная почта:</dt>
             <dd className="contacts__def">
-              btl@ad-omsk.ru <br />
-              s.ulanov@ad-omsk.ru
+              <a href="mailto:btl@ad-omsk.ru">btl@ad-omsk.ru</a> 
+              <br />
+              <a href="mailto:s.ulanov@ad-omsk.ru">s.ulanov@ad-omsk.ru</a>
             </dd>
           </dl>
         </div>

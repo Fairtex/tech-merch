@@ -10,7 +10,6 @@ import AuditIcon from 'assets/icons/audit';
 import PosIcon from 'assets/icons/pos';
 import DisplayIcon from 'assets/icons/storeDisplay';
 import RepairIcon from 'assets/icons/repair';
-// import styles from './styles.module.scss';
 
 const Services = () => {
   return (
