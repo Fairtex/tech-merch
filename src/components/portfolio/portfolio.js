@@ -1,10 +1,31 @@
 import React from "react";
+import { graphql, useStaticQuery } from 'gatsby';
 import { StaticImage } from "gatsby-plugin-image";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useMediaQuery } from 'react-responsive';
 
 import ArrowIcon from 'assets/icons/arrow';
+
+// export const query = graphql`
+//   query PortfolioQuery {
+//     allStrapiPortfolio {
+//       edges {
+//         node {
+//           PortfolioTitle
+//           slug
+//           PortfolioSliderImage {
+//             childImageSharp {
+//               fixed {
+//                 src
+//               }
+//             }
+//           }
+//         } 
+//       }
+//     }
+//   }
+// `;
 
 const responsive = {
   desktop: {
@@ -58,27 +79,38 @@ const CustomButtonGroup = ({
 };
 
 const Portfolio = () => {
+  // const data = useStaticQuery(query);
+  // const source = data.allStrapiPortfolio.edges;
   const isMobileOrTablet = useMediaQuery({
     query: '(max-width: 1023px)'
   });
   return (
     <section className="portfolio" id="portfolio">
       <div className="portfolio__inner">
-        <h2 className="portfolio__title">Наше Портфолио</h2>
-        <Carousel
-            swipeable={isMobileOrTablet}
-            responsive={responsive}
-            arrows={false}
-            infinite={true}
-            containerClass="portfolio__slider-wrap"
-            sliderClass="portfolio__slider"
-            itemClass="portfolio__slider-item"
-            customButtonGroup={<CustomButtonGroup />}
-          >
-            <div className="portfolio__slide">
+        <h2 
+          className="portfolio__title"
+          data-sal="slide-up"
+          data-sal-duration="1500"
+          data-sal-delay="100"
+          data-sal-easing="ease-out-back"
+        >
+          Наше Портфолио
+        </h2>
+        {/* <Carousel
+          swipeable={isMobileOrTablet}
+          responsive={responsive}
+          arrows={false}
+          infinite={true}
+          containerClass="portfolio__slider-wrap"
+          sliderClass="portfolio__slider"
+          itemClass="portfolio__slider-item"
+          customButtonGroup={<CustomButtonGroup />}
+        > */}
+          {/* {source.map((item, index) => (
+            <div key={index} className="portfolio__slide">
               <StaticImage
-                src="../../assets/images/torg-ob.jpg"
-                alt="Торговое оборудование"
+                src={item.node.PortfolioSliderImage.childImageSharp.fixed.src}
+                alt="Пример работы"
                 placeholder="blurred"
                 style={isMobileOrTablet ? {} : 
                   {
@@ -87,61 +119,41 @@ const Portfolio = () => {
                   }}
                 layout="fullWidth"
                 quality={90}
+                objectFit="fill"
               />
               <div className="portfolio__case">
                 <h3 className="portfolio__case-name">
-                  Компания проекта
+                  {item.PortfolioTitle}
                 </h3>
                 <a href="#" className="portfolio__case-link">
                   Смотреть
                 </a>
               </div>
             </div>
-            <div className="portfolio__slide">
-              <StaticImage
-                src="../../assets/images/torg-ob.jpg"
-                alt="Торговое оборудование"
-                placeholder="blurred"
-                style={isMobileOrTablet ? {} : 
-                  {
-                    maxHeight: 600,
-                    minHeight: 600,
-                  }}
-                layout="fullWidth"
-                quality={90}
-              />
-              <div className="portfolio__case">
-                <h3 className="portfolio__case-name">
-                  Компания проекта
-                </h3>
-                <a href="#" className="portfolio__case-link">
-                  Смотреть
-                </a>
-              </div>
+          ))} */}
+          {/* <div className="portfolio__slide">
+            <StaticImage
+              src="../../assets/images/torg-ob.jpg"
+              alt="Торговое оборудование"
+              placeholder="blurred"
+              style={isMobileOrTablet ? {} : 
+                {
+                  maxHeight: 600,
+                  minHeight: 600,
+                }}
+              layout="fullWidth"
+              quality={90}
+            />
+            <div className="portfolio__case">
+              <h3 className="portfolio__case-name">
+                Компания проекта
+              </h3>
+              <a href="#" className="portfolio__case-link">
+                Смотреть
+              </a>
             </div>
-            <div className="portfolio__slide">
-              <StaticImage
-                src="../../assets/images/torg-ob.jpg"
-                alt="Торговое оборудование"
-                placeholder="blurred"
-                style={isMobileOrTablet ? {} : 
-                  {
-                    maxHeight: 600,
-                    minHeight: 600,
-                  }}
-                layout="fullWidth"
-                quality={90}
-              />
-              <div className="portfolio__case">
-                <h3 className="portfolio__case-name">
-                  Компания проекта
-                </h3>
-                <a href="#" className="portfolio__case-link">
-                  Смотреть
-                </a>
-              </div>
-            </div>
-          </Carousel>
+          </div> */}
+        {/* </Carousel> */}
       </div>
     </section>
   )

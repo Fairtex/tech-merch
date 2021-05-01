@@ -17,13 +17,13 @@ const IndexPage = () => {
   }
   return (
   <Layout isMain>
-    <SEO title="Home" />
+    <SEO title="Главная" />
     <Hero />
     <About />
     <Services />
     <Portfolio />
     <Contacts />
-    <Order submitHandler={submitHandler}/>
+    <Order />
   </Layout>
 )};
 

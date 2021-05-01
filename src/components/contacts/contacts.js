@@ -8,7 +8,15 @@ const Contacts = () => {
   return (
     <section className="contacts" id="contacts">
       <div className="contacts__inner">
-        <h2 className="contacts__title">Контакты</h2>
+        <h2 
+          className="contacts__title"
+          data-sal="slide-up"
+          data-sal-duration="1500"
+          data-sal-delay="100"
+          data-sal-easing="ease-out-back"
+        >
+          Контакты
+        </h2>
         <div className="contacts__wrap"> 
           <div className="contacts__map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1125.4272743075483!2d73.39053625962029!3d54.96961026004848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43aafde361dfb43d%3A0x76cbf994f29bec0b!2z0YPQuy4g0KPRh9C10LHQvdCw0Y8sIDE1Miwg0J7QvNGB0LosINCe0LzRgdC60LDRjyDQvtCx0LsuLCA2NDQwNDY!5e0!3m2!1sru!2sru!4v1617554852804!5m2!1sru!2sru" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>

@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import Header from "components/header";
 
-const Layout = ({ children, isMain }) => {
+const Layout = ({ children, isMain = false }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

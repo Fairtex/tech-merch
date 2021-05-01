@@ -39,7 +39,13 @@ const Hero = () => {
     >
       <div className="container">
         <div className="hero__inner">
-          <div className="hero__description">
+          <div 
+            className="hero__description"
+            data-sal="slide-up"
+            data-sal-duration="1500"
+            data-sal-delay="100"
+            data-sal-easing="ease-out-back"
+          >
             <p className="hero__title">
               Гарантия надежной работы
             </p>
@@ -55,7 +61,13 @@ const Hero = () => {
               Сделать заказ
             </AnchorLink>
           </div>
-          <ul className="features">
+          <ul 
+            className="features"
+            data-sal="slide-up"
+            data-sal-duration="2000"
+            data-sal-delay="500"
+            data-sal-easing="ease-out-back"
+          >
             <li className="features__item">
               <ScrewDriver className="features__icon"/>
               <div className="features__info">

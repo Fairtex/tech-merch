@@ -1,5 +1,6 @@
 import React from "react";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { useMediaQuery } from 'react-responsive';
 
 import ServicesArrow from 'assets/icons/serviceArrow';
 import InstallationIcon from 'assets/icons/installation';
@@ -12,15 +13,30 @@ import DisplayIcon from 'assets/icons/storeDisplay';
 import RepairIcon from 'assets/icons/repair';
 
 const Services = () => {
+  const isMobileOrTablet = useMediaQuery({
+    query: '(max-width: 1023px)'
+  });
   return (
     <section className="services" id="services">
       <div className="container">
         <div className="services__inner">
-          <h2 className="services__title">
+          <h2 
+            className="services__title"
+            data-sal="slide-up"
+            data-sal-duration="1500"
+            data-sal-delay="100"
+            data-sal-easing="ease-out-back"
+          >
             Наши Услуги
           </h2>
           <ul className="services__list">
-            <li className="services__item">
+            <li 
+              className="services__item"
+              data-sal="zoom-in"
+              data-sal-duration="1500"
+              data-sal-delay="100"
+              data-sal-easing="ease-out-back"
+            >
               <InstallationIcon className="services__img" />
               <h4 className="services__item-title">
                 Монтаж и демонтаж конструкций
@@ -41,7 +57,13 @@ const Services = () => {
               </div>
             </li>
 
-            <li className="services__item">
+            <li 
+              className="services__item"
+              data-sal="zoom-in"
+              data-sal-duration="1500"
+              data-sal-delay="300"
+              data-sal-easing="ease-out-back"
+            >
               <WareHouseIcon className="services__img" />
               <h4 className="services__item-title">
                 Склад
@@ -62,7 +84,13 @@ const Services = () => {
               </div>
             </li>
 
-            <li className="services__item">
+            <li 
+              className="services__item"
+              data-sal="zoom-in"
+              data-sal-duration="1500"
+              data-sal-delay="500"
+              data-sal-easing="ease-out-back"
+            >
               <LogisticIcon className="services__img" />
               <h4 className="services__item-title">
                 Логистика
@@ -83,7 +111,13 @@ const Services = () => {
               </div>
             </li>
 
-            <li className="services__item">
+            <li 
+              className="services__item"
+              data-sal="zoom-in"
+              data-sal-duration="1500"
+              data-sal-delay="700"
+              data-sal-easing="ease-out-back"
+            >
               <RecycleLogo className="services__img" />
               <h4 className="services__item-title">
                 Утилизация POS-материалов
@@ -104,7 +138,13 @@ const Services = () => {
               </div>
             </li>
 
-            <li className="services__item">
+            <li 
+              className="services__item"
+              data-sal="zoom-in"
+              data-sal-duration="1500"
+              data-sal-delay="100"
+              data-sal-easing="ease-out-back"
+            >
               <AuditIcon className="services__img" />
               <h4 className="services__item-title">
                 Аудит
@@ -125,7 +165,13 @@ const Services = () => {
               </div>
             </li>
 
-            <li className="services__item">
+            <li 
+              className="services__item"
+              data-sal="zoom-in"
+              data-sal-duration="1500"
+              data-sal-delay="300"
+              data-sal-easing="ease-out-back"
+            >
               <PosIcon className="services__img" />
               <h4 className="services__item-title">
                 Размещение POS-материалов
@@ -146,7 +192,13 @@ const Services = () => {
               </div>
             </li>
 
-            <li className="services__item">
+            <li 
+              className="services__item"
+              data-sal="zoom-in"
+              data-sal-duration="1500"
+              data-sal-delay="500"
+              data-sal-easing="ease-out-back"
+            >
               <RepairIcon className="services__img" />
               <h4 className="services__item-title">
                 Диагностика и ремонт оборудования
@@ -167,7 +219,13 @@ const Services = () => {
               </div>
             </li>
 
-            <li className="services__item">
+            <li 
+              className="services__item"
+              data-sal="zoom-in"
+              data-sal-duration="1500"
+              data-sal-delay="700"
+              data-sal-easing="ease-out-back"
+            >
               <DisplayIcon className="services__img" />
               <h4 className="services__item-title">
                 Выкладка продукции

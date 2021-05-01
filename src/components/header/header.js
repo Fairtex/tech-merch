@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "gatsby";
 import cn from 'classnames';
 import { useMediaQuery } from 'react-responsive';
@@ -8,13 +8,9 @@ import { StaticImage } from "gatsby-plugin-image";
 
 
 const Header = ({ isMain, isScrolled }) => {
-  // const [isMenuOpen, setMenuOpen] = useState(false);
   const isDesktop = useMediaQuery({
     query: '(min-width: 1024px)'
   });
-  // const handleBurgerClick = () => {
-  //   setMenuOpen((prev) => !prev);
-  // }
   return (
     <header className={cn('header', isMain && 'header-main', isScrolled && 'fixed')}>
       <div className="container">
@@ -65,13 +61,6 @@ const Header = ({ isMain, isScrolled }) => {
             </nav>
           )}
           <Social />
-          {/* {isMobileOrTablet && (
-            <button className={cn("header__burger", isMenuOpen && "header__burger--open")} onClick={handleBurgerClick}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          )} */}
         </div>
       </div>
     </header>

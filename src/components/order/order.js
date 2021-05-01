@@ -2,6 +2,7 @@ import cn from 'classnames';
 import React, { useCallback } from "react";
 import { Field, Form } from "react-final-form";
 import InputMask from "react-input-mask";
+import { useForm } from '@formspree/react';
 
 import {
   required,
@@ -10,26 +11,31 @@ import {
   isPhoneNumber,
 } from 'utils';
 
-const Order = ({ submitHandler }) => {
-  const onSubmit = useCallback(async (values, form) => {
-    try {
-      submitHandler(values)
-      setTimeout(() => form.restart())
-    } catch (e) {
-      console.error(e)
-    }
-  }, [])
+const Order = () => {
+  const [state, handleSubmit] = useForm("xeqvqdqg");
   return (
     <section className="order" id="order">
       <div className="container">
         <div className="order__inner">
-          <h2 className="order__title">Сделать заказ</h2>
+          <h2 
+            className="order__title"
+            data-sal="slide-up"
+            data-sal-duration="1500"
+            data-sal-delay="100"
+            data-sal-easing="ease-out-back"
+          >
+            Сделать заказ
+          </h2>
           <Form
-            onSubmit={onSubmit}
-            render={({ handleSubmit, form, errors }) => (
+            onSubmit={handleSubmit}
+            render={({ handleSubmit }) => (
               <form
                 className="order__form"
                 onSubmit={handleSubmit}
+                data-sal="zoom-in"
+                data-sal-duration="1500"
+                data-sal-delay="100"
+                data-sal-easing="ease-out-back"
               >
                 <div className="order__fields">
                   <Field name="name" validate={required}>

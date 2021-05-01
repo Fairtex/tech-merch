@@ -67,9 +67,20 @@ const About = () => {
     query: '(max-width: 1023px)'
   });
   return (
-    <section className="about" id="about">
+    <section 
+      className="about" 
+      id="about"
+    >
       <div className="about__inner">
-        <h2 className="about__title">О компании</h2>
+        <h2 
+          className="about__title"
+          data-sal="slide-up"
+          data-sal-duration="1500"
+          data-sal-delay="100"
+          data-sal-easing="ease-out-back"
+        >
+          О компании
+        </h2>
         <Carousel
             swipeable={isMobileOrTablet}
             responsive={responsive}
@@ -94,11 +105,17 @@ const About = () => {
               </div>
               <div className="slide__img-wrap">
                 <StaticImage
-                  src="../../assets/images/torg-ob.jpg"
+                  src="../../assets/images/montage.jpg"
                   alt="Торговое оборудование"
                   placeholder="blurred"
                   layout="fullWidth"
                   quality={90}
+                  style={isMobileOrTablet ? {} : 
+                    {
+                      maxHeight: 750,
+                      minHeight: 750,
+                    }}
+                  objectFit="fill"
                 />
               </div>
             </div>
@@ -115,11 +132,17 @@ const About = () => {
               </div>
               <div className="slide__img-wrap">
                 <StaticImage
-                  src="../../assets/images/torg-ob.jpg"
-                  alt="Торговое оборудование"
+                  src="../../assets/images/agency.jpg"
+                  alt="Наша команда менеджеров"
                   placeholder="blurred"
                   layout="fullWidth"
                   quality={90}
+                  style={isMobileOrTablet ? {} : 
+                    {
+                      maxHeight: 750,
+                      minHeight: 750,
+                    }}
+                  objectFit="fill"
                 />
               </div>
             </div>
@@ -135,11 +158,17 @@ const About = () => {
               </div>
               <div className="slide__img-wrap">
                 <StaticImage
-                  src="../../assets/images/torg-ob.jpg"
-                  alt="Торговое оборудование"
+                  src="../../assets/images/workers.jpg"
+                  alt="Наши специалисты"
                   placeholder="blurred"
                   layout="fullWidth"
                   quality={90}
+                  style={isMobileOrTablet ? {} : 
+                    {
+                      maxHeight: 750,
+                      minHeight: 750,
+                    }}
+                  objectFit="fill"
                 />
               </div>
             </div>
