@@ -1,31 +1,37 @@
 import React from "react";
 import { graphql, useStaticQuery } from 'gatsby';
-import { StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useMediaQuery } from 'react-responsive';
+import { Link } from "gatsby";
 
 import ArrowIcon from 'assets/icons/arrow';
 
-// export const query = graphql`
-//   query PortfolioQuery {
-//     allStrapiPortfolio {
-//       edges {
-//         node {
-//           PortfolioTitle
-//           slug
-//           PortfolioSliderImage {
-//             childImageSharp {
-//               fixed {
-//                 src
-//               }
-//             }
-//           }
-//         } 
-//       }
-//     }
-//   }
-// `;
+export const query = graphql`
+  query PortfolioQuery {
+    allStrapiPortfolio {
+      edges {
+        node {
+          title
+          slug
+          image {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH 
+                quality: 90
+                height: 700
+                width: 1280
+                placeholder: TRACED_SVG
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
+          }
+        } 
+      }
+    }
+  }
+`;
 
 const responsive = {
   desktop: {
@@ -43,6 +49,36 @@ const responsive = {
     items: 1,
     slidesToSlide: 1,
   },
+};
+
+const CustomRightArrow = ({ onClick, ...rest }) => {
+  const {
+    onMove,
+    carouselState: { currentSlide, deviceType }
+  } = rest;
+  return (
+    <button
+      className="portfolio__slider-btn portfolio__slider-btn--next"
+      onClick={() => onClick()}
+    >
+      <ArrowIcon className="portfolio__slider-icon"/>
+    </button>
+  );
+};
+
+const CustomLeftArrow = ({ onClick, ...rest }) => {
+  const {
+    onMove,
+    carouselState: { currentSlide, deviceType }
+  } = rest;
+  return (
+    <button
+      className="portfolio__slider-btn portfolio__slider-btn--prev"
+      onClick={() => onClick()}
+    >
+      <ArrowIcon className="portfolio__slider-icon"/>
+    </button>
+  );
 };
 
 const CustomButtonGroup = ({
@@ -79,8 +115,8 @@ const CustomButtonGroup = ({
 };
 
 const Portfolio = () => {
-  // const data = useStaticQuery(query);
-  // const source = data.allStrapiPortfolio.edges;
+  const data = useStaticQuery(query);
+  const source = data.allStrapiPortfolio.edges;
   const isMobileOrTablet = useMediaQuery({
     query: '(max-width: 1023px)'
   });
@@ -96,64 +132,44 @@ const Portfolio = () => {
         >
           Наше Портфолио
         </h2>
-        {/* <Carousel
+        <Carousel
           swipeable={isMobileOrTablet}
           responsive={responsive}
-          arrows={false}
+          arrows={true}
           infinite={true}
           containerClass="portfolio__slider-wrap"
           sliderClass="portfolio__slider"
           itemClass="portfolio__slider-item"
-          customButtonGroup={<CustomButtonGroup />}
-        > */}
-          {/* {source.map((item, index) => (
-            <div key={index} className="portfolio__slide">
-              <StaticImage
-                src={item.node.PortfolioSliderImage.childImageSharp.fixed.src}
-                alt="Пример работы"
-                placeholder="blurred"
-                style={isMobileOrTablet ? {} : 
-                  {
-                    maxHeight: 600,
-                    minHeight: 600,
-                  }}
-                layout="fullWidth"
-                quality={90}
-                objectFit="fill"
-              />
-              <div className="portfolio__case">
-                <h3 className="portfolio__case-name">
-                  {item.PortfolioTitle}
-                </h3>
-                <a href="#" className="portfolio__case-link">
-                  Смотреть
-                </a>
+          customLeftArrow={<CustomLeftArrow />}
+          customRightArrow={<CustomRightArrow />}
+        >
+          {source.map((item, index) => {
+            const image = getImage(item.node.image)
+            return (
+              <div key={index} className="portfolio__slide">
+                <GatsbyImage
+                  image={image}
+                  alt="Коллаж из фотографий обьекта"
+                  style={isMobileOrTablet ? {} : 
+                    {
+                      maxHeight: 750,
+                      minHeight: 750,
+                    }}
+                  layout="fullWidth"
+                  quality={90}
+                  objectFit="fill"
+                />
+                <div className="portfolio__case">
+                  <h3 className="portfolio__case-name">
+                    {item.node.title}
+                  </h3>
+                  <Link to={`/${item.node.slug}`} className="portfolio__case-link">
+                    Смотреть
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))} */}
-          {/* <div className="portfolio__slide">
-            <StaticImage
-              src="../../assets/images/torg-ob.jpg"
-              alt="Торговое оборудование"
-              placeholder="blurred"
-              style={isMobileOrTablet ? {} : 
-                {
-                  maxHeight: 600,
-                  minHeight: 600,
-                }}
-              layout="fullWidth"
-              quality={90}
-            />
-            <div className="portfolio__case">
-              <h3 className="portfolio__case-name">
-                Компания проекта
-              </h3>
-              <a href="#" className="portfolio__case-link">
-                Смотреть
-              </a>
-            </div>
-          </div> */}
-        {/* </Carousel> */}
+          )})}  
+        </Carousel>
       </div>
     </section>
   )

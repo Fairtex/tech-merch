@@ -34,28 +34,30 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 };
 
-// module.exports.onCreateNode = async ({ node, actions, createNodeId }) => {
-//   const crypto = require(`crypto`);
+module.exports.onCreateNode = async ({ node, actions, createNodeId }) => {
+  const crypto = require(`crypto`);
+  const { createNode, createParentChildLink } = actions
 
-//   if (node.internal.type === 'StrapiPortfolio') {
-//     const newNode = {
-//       id: createNodeId(`StrapiPortfolioPortfolioDescription-${node.id}`),
-//       parent: node.id,
-//       children: [],
-//       internal: {
-//         content: node.content || ' ',
-//         type: 'StrapiPortfolioPortfolioDescription',
-//         mediaType: 'text/markdown',
-//         contentDigest: crypto
-//           .createHash('md5')
-//           .update(node.content || ' ')
-//           .digest('hex'),
-//       },
-//     };
-//     actions.createNode(newNode);
-//     actions.createParentChildLink({
-//       parent: node,
-//       child: newNode,
-//     });
-//   }
-// };
+  if (node.internal.type === 'StrapiPortfolio') {
+
+    const newNode = {
+      id: createNodeId(`StrapiPortfolioContent-${node.id}`),
+      parent: node.id,
+      children: [],
+      internal: {
+        content: node.content || ' ',
+        type: 'StrapiPortfolioContent',
+        mediaType: 'text/markdown',
+        contentDigest: crypto
+          .createHash('md5')
+          .update(node.content || ' ')
+          .digest('hex'),
+      },
+    };
+    createNode(newNode);
+    createParentChildLink({
+      parent: node,
+      child: newNode,
+    });
+  }
+};

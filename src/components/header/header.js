@@ -24,7 +24,7 @@ const Header = ({ isMain, isScrolled }) => {
               width={200}
             />
           </Link>
-          {isMain && isDesktop && (
+          {isDesktop && (
             <nav className={cn("header__nav")}>
               <AnchorLink 
                 to="/#about" 
