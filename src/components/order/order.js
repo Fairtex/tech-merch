@@ -13,6 +13,18 @@ import {
 
 const Order = () => {
   const [state, handleSubmit] = useForm("xeqvqdqg");
+  if (state.succeeded) {
+    return (
+      <div className="container">
+        <div className="order__inner">
+          <p className="order__title">
+            Спасибо за заявку! <br />
+            Мы свяжемся с Вами в ближайшее время
+          </p>
+        </div>
+      </div>
+    );
+}
   return (
     <section className="order" id="order">
       <div className="container">

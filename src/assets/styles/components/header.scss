@@ -1,4 +1,5 @@
 .header {
+  box-shadow: 0px 10px 20px rgba(52, 69, 134, 0.05);
   &-main {
     background: transparent;
     position: absolute;
@@ -7,6 +8,7 @@
     right: 0;
     width: 100%;
     color: #ffffff;
+    box-shadow: none;
     z-index: 10;
   }
 
