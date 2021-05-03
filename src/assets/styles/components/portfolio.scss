@@ -27,21 +27,6 @@
       margin: 0 auto;
       max-width: 1440px;
     }
-    &-btn-group {
-      position: absolute;
-      z-index: 5;
-      top: 50%;
-      left: 25px;
-      right: 25px;
-      transform: translateY(-50%);
-      display: flex;
-      justify-content: space-between;
-
-      @media (max-width: 767px) {
-        left: 5px;
-        right: 5px;
-      }
-    }
     &-btn {
       position: absolute;
       top: 50%;
@@ -54,7 +39,7 @@
       background: none;
       border: none;
       padding: 0;
-      opacity: 0.4;
+      opacity: 0.6;
       transition: opacity 0.3s ease;
       z-index: 5;
 
@@ -72,14 +57,28 @@
 
       @media (max-width: 1023px) {
         width: 80px;
+
+        &--prev {
+          left: 20px;
+        }
+        &--next {
+          right: 20px;
+        }
       }
 
       @media (max-width: 767px) {
-        width: 65px;
+        width: 60px;
+
+        &--prev {
+          left: 10px;
+        }
+        &--next {
+          right: 10px;
+        }
       }
 
       &:hover {
-        opacity: 0.8;
+        opacity: 0.9;
       }
     }
     &-icon {
@@ -98,9 +97,9 @@
     max-width: 1150px;
     margin: 0 auto;
 
-    @media (max-width: 1023px) {}
-
-    @media (max-width: 767px) {}
+    @media (max-width: 1023px) {
+      width: 100%;
+    }
   }
 
   &__case {
@@ -115,6 +114,15 @@
     z-index: 10;
     max-width: 500px;
 
+    @media (max-width: 1023px) {
+      padding: 35px;
+    }
+    @media (max-width: 767px) {
+      padding: 20px;
+      border-radius: 16px;
+      max-width: 220px;
+    }
+
     &-name {
       text-align: center;
       font-size: 24px;
@@ -122,6 +130,16 @@
       color: #fff;
       margin: 0 0 40px;
       word-break: break-word;
+
+      @media (max-width: 1023px) {
+        font-size: 20px;
+        margin: 0 0 30px;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 18px;
+        margin: 0 0 20px;
+      }
     }
 
     &-link {
@@ -137,6 +155,16 @@
       font-size: 20px;
       line-height: 1.2;
       transition: all 0.3s ease;
+
+      @media (max-width: 1023px) {
+        font-size: 16px;
+        padding: 12px 20px;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
 
       &:hover {
         border-color: #86C24B;

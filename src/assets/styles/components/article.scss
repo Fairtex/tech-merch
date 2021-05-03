@@ -42,6 +42,18 @@
       ul {
         font-family: 'Montserrat', sans-serif !important;
       }
+
+      img {
+        display: block;
+        width: 80%;
+        max-width: 650px !important;
+        height: auto;
+        margin: 0 auto 30px;
+
+        @media (max-width: 767px) {
+          width: 95%;
+        }
+      }
     }
   }
 }

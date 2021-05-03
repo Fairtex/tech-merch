@@ -56,7 +56,7 @@ const PortfolioTemplate = ({ data, location }) => {
               className="article__content-wrap"
               skipHtml 
               allowDangerousHtml 
-              source={article.content}
+              source={article.content.replaceAll('/uploads/', 'http://localhost:1337/uploads/')}
             />
           </article>
         </section>
