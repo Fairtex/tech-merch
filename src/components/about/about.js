@@ -66,6 +66,29 @@ const About = () => {
   const isMobileOrTablet = useMediaQuery({
     query: '(max-width: 1023px)'
   });
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1024px)'
+  });
+  const isLargeDesktop = useMediaQuery({
+    query: '(min-width: 1366px)'
+  });
+  const imHeight = () => {
+    if (isLargeDesktop) {
+      return {
+        maxHeight: 750,
+        minHeight: 750,
+      }
+    }
+    if (isDesktop) {
+      return {
+        maxHeight: 550,
+        minHeight: 550,
+      }
+    }
+    if (isMobileOrTablet) {
+      return {}
+    }
+  }
   return (
     <section 
       className="about" 
@@ -87,7 +110,7 @@ const About = () => {
             arrows={false}
             infinite={true}
             autoPlay={true}
-            autoPlaySpeed={3000}
+            autoPlaySpeed={10000}
             containerClass="about__slider-wrap"
             sliderClass="about__slider"
             itemClass="about__slider-item"
@@ -110,11 +133,7 @@ const About = () => {
                   placeholder="blurred"
                   layout="fullWidth"
                   quality={90}
-                  style={isMobileOrTablet ? {} : 
-                    {
-                      maxHeight: 750,
-                      minHeight: 750,
-                    }}
+                  style={imHeight()}
                   objectFit="fill"
                 />
               </div>
@@ -137,11 +156,7 @@ const About = () => {
                   placeholder="blurred"
                   layout="fullWidth"
                   quality={90}
-                  style={isMobileOrTablet ? {} : 
-                    {
-                      maxHeight: 750,
-                      minHeight: 750,
-                    }}
+                  style={imHeight()}
                   objectFit="fill"
                 />
               </div>
@@ -163,11 +178,7 @@ const About = () => {
                   placeholder="blurred"
                   layout="fullWidth"
                   quality={90}
-                  style={isMobileOrTablet ? {} : 
-                    {
-                      maxHeight: 750,
-                      minHeight: 750,
-                    }}
+                  style={imHeight()}
                   objectFit="fill"
                 />
               </div>
