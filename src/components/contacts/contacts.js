@@ -37,9 +37,7 @@ const Contacts = () => {
 
             <dt className="contacts__term">Электронная почта:</dt>
             <dd className="contacts__def">
-              <a href="mailto:btl@ad-omsk.ru">btl@ad-omsk.ru</a> 
-              <br />
-              <a href="mailto:s.ulanov@ad-omsk.ru">s.ulanov@ad-omsk.ru</a>
+              <a href="mailto:zakaz@techmerchomsk.ru">zakaz@techmerchomsk.ru</a> 
             </dd>
           </dl>
         </div>
